@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veteran-Led Funding Group</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .hero-section {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: 
+                linear-gradient(to bottom, 
+                    rgba(0, 0, 0, 0.4) 0%,
+                    rgba(0, 0, 0, 0.6) 50%,
+                    rgba(0, 0, 0, 0.8) 100%),
+                url('YOUR_HANDSHAKE_IMAGE.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .hero-content {
+            text-align: center;
+            padding: 40px;
+            max-width: 1200px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .title {
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: bold;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+            background: linear-gradient(135deg, #ffd700, #ffed4a, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .subtitle {
+            font-size: clamp(18px, 2.5vw, 28px);
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+            margin-bottom: 40px;
+        }
+        
+        .intro-text {
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 50px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+        
+        .stat {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 20px 30px;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ffd700;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .main-content {
+            position: relative;
+            background-image: 
+                linear-gradient(to bottom, 
+                    rgba(0, 0, 0, 0.85) 0%,
+                    rgba(0, 0, 0, 0.9) 50%,
+                    rgba(0, 0, 0, 0.85) 100%),
+                url('YOUR_NYC_SKYLINE_IMAGE.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 80px 20px;
+        }
+        
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .section {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+        }
+        
+        .section h2 {
+            font-size: 24px;
+            color: #ffd700;
+            margin-bottom: 25px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #ffd700, transparent);
+        }
+        
+        .section p, .section li {
+            line-height: 1.8;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            color: #ffd700;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        li:hover {
+            transform: translateX(5px);
+        }
+        
+        li::before {
+            content: "▸";
+            position: absolute;
+            left: 10px;
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
+        .full-width-section {
+            grid-column: 1 / -1;
+        }
+        
+        .leadership-section {
+            background-image: 
+                linear-gradient(to bottom, 
+                    rgba(0, 0, 0, 0.7) 0%,
+                    rgba(0, 0, 0, 0.8) 100%),
+                url('YOUR_FLAG_IMAGE.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .leadership-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .leadership-title {
+            font-size: 36px;
+            color: #ffd700;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+        }
+        
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .leader-card {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .leader-card:hover {
+            transform: scale(1.05);
+            border-color: #ffd700;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        .leader-name {
+            font-size: 24px;
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .leader-title {
+            color: #e0e0e0;
+            font-size: 16px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, 
+                rgba(255, 215, 0, 0.1) 0%,
+                rgba(255, 215, 0, 0.05) 50%,
+                rgba(255, 215, 0, 0.1) 100%);
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 3px solid #ffd700;
+            border-bottom: 3px solid #ffd700;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 36px;
+            color: #ffd700;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .cta-text {
+            font-size: 20px;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .email-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ffed4a);
+            color: #000000;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .email-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
+        }
+        
+        .email-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .email-button:hover::before {
+            left: 100%;
+        }
+        
+        .email-address {
+            display: block;
+            margin-top: 20px;
+            font-size: 24px;
+            color: #ffd700;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+        }
+        
+        .footer {
+            background: #000000;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .footer-text {
+            color: #808080;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .title {
+                letter-spacing: 2px;
+            }
+            
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section with Handshake Background -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="title">VETERAN-LED FUNDING GROUP</h1>
+            <p class="subtitle">Connecting Entrepreneurs with Real Investors Since 2008</p>
+            
+            <div class="intro-text">
+                During the housing market crash in 2008, a group of veterans banded together to find investors who could help during one of the toughest real estate downturns in history. When a team of veterans puts their minds to something, they get it done - one connection led to another, and the rest is history.
+            </div>
+            
+            <div class="stats-bar">
+                <div class="stat">
+                    <span class="stat-number">975+</span>
+                    <span class="stat-label">Active Investors</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">39%</span>
+                    <span class="stat-label">Flag Officers</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">$1M-$100M+</span>
+                    <span class="stat-label">Funding Range</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">Since 2008</span>
+                    <span class="stat-label">Serving Entrepreneurs</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content with NYC Skyline Background -->
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="section">
+                <h2>How It Works</h2>
+                <ul>
+                    <li>Submit your Executive Summary (3-7 pages)</li>
+                    <li>Our team reviews it for legitimacy and alignment</li>
+                    <li>If accepted, we send it to SGM for review</li>
+                    <li>If approved, we schedule a 1-hour briefing call - CEO only</li>
+                    <li>After the briefing, you decide to proceed or withdraw</li>
+                    <li>If proceeding, send the $600 fee via Zelle, Venmo, or Certified Check</li>
+                    <li>Your application goes live for investor review (~3 weeks)</li>
+                    <li>If you don't get funded or choose to withdraw - your $600 is refunded</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>Key Details</h2>
+                <ul>
+                    <li><strong>$600 refundable fee</strong> - No questions asked</li>
+                    <li><strong>975+ active investors</strong> - Growing network</li>
+                    <li><strong>3-7 pages Executive Summary</strong> - Keep it concise</li>
+                    <li><strong>Veterans encouraged</strong> - Mention it in your summary</li>
+                    <li><strong>Fastest approval:</strong> Under 3 weeks</li>
+                    <li><strong>Weekly status updates</strong> via email</li>
+                    <li><strong>List all certifications</strong> your company holds</li>
+                    <li><strong>Worldwide applications</strong> accepted</li>
+                    <li><strong>Direct calls only</strong> - No Zoom/Google Meet</li>
+                </ul>
+            </div>
+            
+            <div class="section full-width-section">
+                <h2>Frequently Asked Questions</h2>
+                
+                <div class="faq-question">Have any applicants ever been turned down?</div>
+                <p>Yes - 14 applicants were blacklisted for falsifying government contracts and purchase orders. They were refunded their $600 fee, but integrity is non-negotiable here. We maintain the highest standards of honesty and transparency in all our dealings.</p>
+                
+                <div class="faq-question">Do you help write Executive Summaries?</div>
+                <p>Yes, we do provide this service for an additional fee. Our team of experienced professionals can help craft a compelling Executive Summary that effectively communicates your business vision and potential to our investor network.</p>
+                
+                <div class="faq-question">What types of businesses get funded?</div>
+                <p>We've successfully funded businesses across all sectors - from technology and healthcare to manufacturing and real estate. What matters most is a solid business plan, realistic projections, and a committed leadership team.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Leadership Section with Flag Background -->
+    <div class="leadership-section">
+        <div class="leadership-wrapper">
+            <h2 class="leadership-title">Leadership Team</h2>
+            <div class="leadership-grid">
+                <div class="leader-card">
+                    <div class="leader-name">Rudy Montes</div>
+                    <div class="leader-title">Co-Founder</div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-name">Joseph Babcock</div>
+                    <div class="leader-title">Co-Founder</div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-name">Filene Lehman</div>
+                    <div class="leader-title">Co-Founder</div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to Take the Next Step?</h2>
+                    <p class="cta-text">Join hundreds of successful entrepreneurs who have secured funding through our veteran-led network. Your vision deserves the right backing.</p>
+                    <a href="mailto:agritechfunds@gmail.com" class="email-button">
+                        CLICK HERE TO SUBMIT YOUR EXECUTIVE SUMMARY
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p class="footer-text">© 2024 Veteran-Led Funding Group | Serving Entrepreneurs with Honor and Integrity Since 2008</p>
+    </div>
+    
+    <script>
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.hero-section, .main-content, .leadership-section');
+            parallax.forEach(element => {
+                const speed = element.dataset.speed || 0.5;
+                element.style.backgroundPositionY = -(scrolled * speed) + 'px';
+            });
+        });
+    </script>
+</body>
+</html>
